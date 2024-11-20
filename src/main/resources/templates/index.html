@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <link rel="stylesheet" th:href="@{/dist/css/bootstrap.css}">
+    <link href="/css/cmcontrol.css" media="screen" rel="stylesheet"/>
+    <title> index </title>
+
+    <style>
+        .index-content * {
+            outline: 0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .index-content html, .index-content body, .index-content canvas {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #DDF4FF;
+            cursor: ns-resize;
+        }
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+</head>
+
+<body>
+<div th:replace="~{fragments/header :: header}"></div>
+
+<div class="index-content">
+    <canvas></canvas>
+
+    <script type="text/javascript" src="/js/libs/signals.min.js"></script>
+    <script type="text/javascript" src="/js/libs/CMControl.min.js"></script>
+    <script type="text/javascript" src="/js/libs/Wave.js"></script>
+    <script>
+        window.onload = function () {
+            if (typeof Wave !== 'undefined' && Wave.init) {
+                Wave.init();
+            }
+        };
+    </script>
+</div>
+
+</body>
+</html>

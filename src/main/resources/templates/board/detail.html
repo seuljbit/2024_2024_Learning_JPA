@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout.html}">
+
+<div layout:fragment="content">
+    <div class="container-md">
+        <h1>Boot Detail Page [[${boardDTO.bno}]]</h1>
+        <hr>
+
+        <form action="/board/modify" method="post" id="modForm">
+            <input type="hidden" name="bno" th:value="${boardDTO.bno}">
+
+            <div class="my-3">
+                <label for="regAt"> 작성 날짜 </label>
+                <input type="text" class="form-control" id="regAt" th:value="${boardDTO.regAt}" readonly>
+            </div>
+
+            <div class="my-3">
+                <label for="modAt"> 수정 날짜 </label>
+                <input type="text" class="form-control" id="modAt" th:value="${boardDTO.modAt}" readonly>
+            </div>
+
+            <div class="mb-3">
+                <label for="title"> 제목 </label>
+                <input type="text" class="form-control" id="title" name="title"
+                       th:value="${boardDTO.title}" readonly>
+            </div>
+
+            <div class="mb-3">
+                <label for="writer"> 작성자 </label>
+                <input type="text" class="form-control" id="writer" name="writer"
+                       th:value="${boardDTO.writer}" readonly>
+            </div>
+
+
+            <div class="mb-3">
+                <label for="content"> 내용 </label>
+                <textarea name="content" id="content" cols="50" rows="5"
+                          class="form-control" readonly>[[${boardDTO.content}]]
+                </textarea>
+            </div>
+            <button type="button" id="listBtn" class="btn btn-outline-primary"> 목록 </button>
+            <!-- detail page 에서 modify 상태로 변경하기 위한 버튼-->
+            <button type="button" id="modBtn" class="btn btn-outline-warning"> 수정 </button>
+            <button type="button" id="delBtn" class="btn btn-outline-danger"> 삭제 </button>
+        </form>
+
+        <form action="/board/delete" method="get" id="delForm" style="display:none;">
+            <input type="hidden" name="bno" th:value="${boardDTO.bno}">
+        </form>
+
+    </div>
+
+    <script th:src="@{/js/boardDetail.js}"> </script>
+</div>
