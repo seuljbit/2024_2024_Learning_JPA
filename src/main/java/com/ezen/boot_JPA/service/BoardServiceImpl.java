@@ -7,10 +7,12 @@ import com.ezen.boot_JPA.repository.BoardRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,21 +31,33 @@ public class BoardServiceImpl implements BoardService {
         return boardRepository.save(convertDtoToEntity(boardDTO)).getBno();
     }
 
-    @Override
-    public List<BoardDTO> getList() {
-        /* 컨트롤러에서 보내야 하는 리턴은 List<BoardDTO>
-         * DB에서 가져오는 리턴은 List<Board> -> BoardDTO 객체로 변환
-         * findAll() = select *
-         * 정렬 : Sort.by(Sort.Direction.DESC, "정렬 기준 칼럼명") */
-
-        List<Board> boardList = boardRepository.findAll(Sort.by(Sort.Direction.DESC, "bno"));
-
+//    @Override
+//    public List<BoardDTO> getList(int pageNo) {
+//        /* 컨트롤러에서 보내야 하는 리턴은 List<BoardDTO>
+//         * DB에서 가져오는 리턴은 List<Board> -> BoardDTO 객체로 변환
+//         * findAll() = select *
+//         * 정렬 : Sort.by(Sort.Direction.DESC, "정렬 기준 칼럼명") */
+//
+//        List<Board> boardList = boardRepository.findAll(Sort.by(Sort.Direction.DESC, "bno"));
+//
 //        List<BoardDTO> boardDTOList = new ArrayList<>();
 //        for (Board board : boardList) {
 //            boardDTOList.add(convertEntityToDto(board));
 //        }
+//
+//        return boardList.stream().map(this::convertEntityToDto).toList();
+//    }
 
-        return boardList.stream().map(this::convertEntityToDto).toList();
+    @Override
+    public Page<BoardDTO> getList(int pageNo) {
+        // pageNo = 0부터 시작
+        // 0 => limit 0, 10 / 1 => limit 10, 10
+        Pageable pageable = PageRequest.of(pageNo, 10, Sort.by("bno").descending());
+        Page<Board> list = boardRepository.findAll(pageable);
+
+        Page<BoardDTO> boardDTOList = list.map(b -> convertEntityToDto(b));
+
+        return boardDTOList;
     }
 
     @Override

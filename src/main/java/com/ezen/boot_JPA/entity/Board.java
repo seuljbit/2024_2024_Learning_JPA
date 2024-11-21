@@ -19,7 +19,7 @@ public class Board extends TimeBase {
 
     @Id // 기본키
     @GeneratedValue(strategy = GenerationType.IDENTITY) // auto_increments 생성
-    private Long bno;
+    private long bno;
 
     @Column(length = 100, nullable = false) // nullable = false -> not null(null 불가능!!)
     private String title;

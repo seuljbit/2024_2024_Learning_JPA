@@ -10,9 +10,9 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class BoardDTO {
+public class CommentDTO {
+    private long cno;
     private long bno;
-    private String title;
     private String writer;
     private String content;
     private LocalDateTime regAt, modAt;

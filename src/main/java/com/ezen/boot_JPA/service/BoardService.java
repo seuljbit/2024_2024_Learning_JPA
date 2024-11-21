@@ -2,15 +2,13 @@ package com.ezen.boot_JPA.service;
 
 import com.ezen.boot_JPA.dto.BoardDTO;
 import com.ezen.boot_JPA.entity.Board;
-
-import java.util.List;
+import org.springframework.data.domain.Page;
 
 /* interface : 추상 메서드만 가능 but 일부 메서드 구현 가능
  * 메서드를 default(접근 제한자)로 선언하면 구현 가능
   - 자식 클래스(구현체)에서 디폴트 메소드를 오버라이딩하여 재정의 가능
  */
 public interface BoardService {
-    Long insert(BoardDTO boardDTO);
 
     /* BoardDTO(java class) : bno, title, writer, content, regAt, modAt
      * Board(table) : bno, title, writer, content */
@@ -37,7 +35,10 @@ public interface BoardService {
                 .build();
     }
 
-    List<BoardDTO> getList();
+    Long insert(BoardDTO boardDTO);
+
+    // List<BoardDTO> getList();
+    Page<BoardDTO> getList(int pageNo);
 
     BoardDTO getDetail(Long bno);
 

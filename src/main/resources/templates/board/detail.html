@@ -51,7 +51,55 @@
             <input type="hidden" name="bno" th:value="${boardDTO.bno}">
         </form>
 
+        <!-- 댓글 입력 -->
+        <div class="input-group mb-3">
+            <span id="cmtWriter"> 댓글작성자 </span>
+            <input type="text" id="cmtText" class="form-control" placeholder="Add Comment..." aria-label="Username" aria-describedby="basic-addon1">
+            <button type="button" id="cmtAddBtn" class="btn btn-secondary">post</button>
+        </div>
+
+        <!-- 댓글 출력 -->
+        <ul class="list-group list-group-flush" id="cmtListArea">
+            <li class="list-group-item">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold"> w </div>
+                    c
+                </div>
+                <span class="badge text-bg-primary rounded-pill">r</span>
+            </li>
+        </ul>
+
+        <!-- 댓글 더보기 버튼 : 더 표시하고자 하는 댓글이 없으면 사라지게함. -->
+        <div> <button type="button" id="moreBtn" data-page="1" class="btn btn-dark" style="visibility: hidden"> + </button> </div>
+
+        <!-- modal line -->
+        <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="cmtWriterMod"></h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <input type="text" class="form-control" id="cmtTextMod">
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" id="cmtModBtn" class="btn btn-primary">changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            let bnoVal= [[${boardDTO.bno}]];
+            console.log(bnoVal);
+        </script>
     </div>
 
     <script th:src="@{/js/boardDetail.js}"> </script>
+    <script th:src="@{/js/boardComment.js}"> </script>
+    <script> spreadCommendList(bnoVal); </script>
 </div>
