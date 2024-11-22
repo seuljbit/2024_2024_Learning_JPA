@@ -12,17 +12,17 @@ class BootJpaApplicationTests {
 	@Autowired
 	private BoardService boardService;
 
-	@Test
-	void contextLoads() {
-		for (int i = 2; i < 300; i++) {
-			BoardDTO boardDTO = BoardDTO.builder()
-					.title("test title " + i)
-					.writer("tester " + i)
-					.content("Test Content " + i)
-					.build();
-
-			boardService.insert(boardDTO);
-		}
-	}
+//	@Test
+//	void contextLoads() {
+//		for (int i = 2; i < 300; i++) {
+//			BoardDTO boardDTO = BoardDTO.builder()
+//					.title("test title " + i)
+//					.writer("tester " + i)
+//					.content("Test Content " + i)
+//					.build();
+//
+//			boardService.insert(boardDTO);
+//		}
+//	}
 
 }

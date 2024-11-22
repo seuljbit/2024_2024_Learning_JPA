@@ -1,9 +1,7 @@
 package com.ezen.boot_JPA.dto;
-
 import lombok.*;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Getter
 @Setter
@@ -11,10 +9,12 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class BoardDTO {
+public class FileDTO {
+    private String uuid;
+    private String saveDir;
+    private String fileName;
+    private int fileType;
     private long bno;
-    private String title;
-    private String writer;
-    private String content;
+    private long fileSize;
     private LocalDateTime regAt, modAt;
 }

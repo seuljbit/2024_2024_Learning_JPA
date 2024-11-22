@@ -7,9 +7,9 @@
     </appender>
 
     <logger name="com.ezen.boot_JPA" level="INFO" appender-ref="STDOUT"/>
-    <logger name="jdbc" level="OFF"/>
-    <logger name="jdbc.connection" level="OFF"/>
-    <logger name="jdbc.audit" level="OFF"/>
+<!--    <logger name="jdbc" level="OFF"/>-->
+<!--    <logger name="jdbc.connection" level="OFF"/>-->
+<!--    <logger name="jdbc.audit" level="OFF"/>-->
     <logger name="jdbc.sqlonly" level="INFO" appender-ref="STDOUT"/>
     <logger name="jdbc.resultsettable" level="INFO" appender-ref="STDOUT"/>
     <logger name="org.springframework" level="error"/>
