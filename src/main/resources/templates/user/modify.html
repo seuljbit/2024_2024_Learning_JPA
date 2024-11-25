@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout.html}">
+
+<div layout:fragment="content">
+    <div class="container-md">
+        <h1>User Modify Page</h1>
+        <hr>
+        <div class="mt-4 p-5 rounded" th:with="user=${#authentication.getPrincipal()}">
+            <div class="row">
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <img src="/dist/image/image.png" class="card-img-top" alt="User Image">
+                        <form action="/user/modify" method="post">
+                            <div class="card-body">
+                                <!-- 이메일 -->
+                                <div class="my-3">
+                                    <label for="email">Email:</label>
+                                    <input type="email" class="form-control" id="email" name="email"
+                                           th:value="${user.memberDTO.email}" readonly>
+                                </div>
+
+                                <!-- 비밀번호 -->
+                                <div class="my-3">
+                                    <label for="pwd">Password:</label>
+                                    <input type="password" class="form-control" id="pwd" name="pwd"
+                                           placeholder="Enter Password">
+                                </div>
+
+                                <!-- 닉네임 -->
+                                <div class="my-3">
+                                    <label for="nickName">Nickname:</label>
+                                    <input type="text" class="form-control" id="nickName" name="nickName"
+                                           th:value="${user.memberDTO.nickName}">
+                                </div>
+
+                                <!-- 권한 -->
+                                <div class="mb-3">
+                                    <span class="badge text-bg-warning" th:each="auth : ${user.memberDTO.authUserList}">
+                                        [[${auth.auth}]]
+                                    </span>
+                                </div>
+
+                                <!-- 버튼 -->
+                                <button type="submit" class="btn btn-primary">회원수정</button>
+                                <a th:href="@{/user/remove}">
+                                    <button type="button" class="btn btn-danger">회원탈퇴</button>
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

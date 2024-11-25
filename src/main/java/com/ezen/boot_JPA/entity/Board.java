@@ -21,7 +21,7 @@ public class Board extends TimeBase {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // auto_increments 생성
     private long bno;
 
-    @Column(length = 100, nullable = false) // nullable = false -> not null(null 불가능!!)
+    @Column(length = 100, nullable = false) // nullable = false -> not null
     private String title;
 
     @Column(length = 200, nullable = false)
