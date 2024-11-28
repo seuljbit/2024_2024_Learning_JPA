@@ -15,9 +15,18 @@
                     <input type="text" class="form-control" name="title" id="t" placeholder="title...">
                 </div>
 
+<!--                <div class="mb-3">-->
+<!--                    <label for="w" class="form-label">Writer</label>-->
+<!--                    <input type="text" class="form-control" name="writer" id="w" placeholder="writer...">-->
+<!--                </div>-->
                 <div class="mb-3">
-                    <label for="w" class="form-label">Writer</label>
-                    <input type="text" class="form-control" name="writer" id="w" placeholder="writer...">
+                    <label class="form-label">Writer</label>
+                    <!-- 로그인 사용자 -->
+                    <input type="text" class="form-control" name="writer"
+                           th:if="${isAuthenticated}" th:value="${writer}" readonly placeholder="writer...">
+                    <!-- 비회원 -->
+                    <input type="text" class="form-control"  name="writer"
+                           th:unless="${isAuthenticated}" placeholder="Enter your name..." required>
                 </div>
 
                 <div class="mb-3">
@@ -35,7 +44,14 @@
                 <!-- file 출력 라인 -->
                 <div class="input-group mb-3" id="fileZone"></div>
 
+                <div class="mb-3">
+                    <label for="password" class="form-label"> 비밀번호 </label>
+                    <input type="password" class="form-control" name="password" id="password" />
+                </div>
+
                 <button type="submit" class="btn btn-primary" id="regBtn">register</button>
+
+
             </form>
         </div>
     </div>

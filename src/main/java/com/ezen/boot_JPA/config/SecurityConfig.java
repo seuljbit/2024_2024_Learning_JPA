@@ -30,11 +30,12 @@ public class SecurityConfig {
         return http
                 .csrf(csrf -> csrf.disable()) // CSRF 비활성화
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers( "/", "/js/**", "/dist/**", "/upload/**",
-                                "/index/**", "/user/join", "/user/login",
-                                "/board/list", "/board/detail/**", "/comment/list/**").permitAll()
-                        .requestMatchers("/user/list").hasAnyRole("ADMIN") // ADMIN 권한만 접근 가능
-                        .anyRequest().authenticated()
+                        .requestMatchers("/", "/js/**", "/css/**", "/img/**", "/dist/**", "/upload/**",
+                                "/index/**", "/user/join", "/user/login", "/board/list", "/board/register",
+                                "/board/password-check", "/error").permitAll()
+                        .requestMatchers("/board/**").permitAll() // 나머지 /board 경로도 허용
+                        .requestMatchers("/user/list").hasRole("ADMIN") // ADMIN 전용
+                        .anyRequest().authenticated() // 그 외 모든 요청은 인증 필요
                 )
                 .formLogin(login -> login
                         .usernameParameter("email")
@@ -53,7 +54,6 @@ public class SecurityConfig {
                 .build();
     }
 
-
     @Bean
     UserDetailsService customUserService() {
         return new CustomUserService();
@@ -64,7 +64,6 @@ public class SecurityConfig {
         return configuration.getAuthenticationManager();
 
     }
-
 
     @Bean
     AuthenticationSuccessHandler successHandler() {

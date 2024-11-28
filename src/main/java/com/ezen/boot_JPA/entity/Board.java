@@ -30,6 +30,12 @@ public class Board extends TimeBase {
     @Column(columnDefinition = "TEXT")
     private String content;
 
+    @Column(length = 255, nullable = false)
+    private String password;
+
+    @Column(name = "cmt_count", nullable = false)
+    private int cmtCount = 0;
+
     /*
      생성 시 초기화 값 지정 : 객체가 생길 때 객체의 기본값 생성
      @Builder.Default

@@ -12,6 +12,7 @@ document.getElementById('modBtn').addEventListener('click',()=>{
 // title, content 의 readonly를 해지   readOnly = true  / false
     document.getElementById('title').readOnly = false;
     document.getElementById('content').readOnly = false;
+    document.getElementById('password').style.visibility = 'visible'
 
     // modBtn delBtn 삭제
     document.getElementById('modBtn').remove();

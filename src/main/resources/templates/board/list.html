@@ -19,11 +19,20 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="bvo:${list}">
-                <td>[[${bvo.bno}]]</td>
-                <td><a th:href="@{/board/detail(bno=${bvo.bno})}">[[${bvo.title}]]</a></td>
-                <td>[[${bvo.writer}]]</td>
-                <td>[[${bvo.regAt}]]</td>
+            <tr th:each="bvo : ${list}">
+                <td th:text="${bvo.bno}"></td>
+                <td>
+                    <a th:if="${isAdmin}" th:href="@{/board/detail(bno=${bvo.bno})}">
+                        [[${bvo.title}]]
+                        <span th:if="${bvo != null and bvo.cmtCount != null and bvo.cmtCount > 0}">([[${bvo.cmtCount}]])</span>
+                    </a>
+                    <a th:unless="${isAdmin}" th:href="@{/board/password-check(bno=${bvo.bno})}">
+                        [[${bvo.title}]]
+                        <span th:if="${bvo != null and bvo.cmtCount != null and bvo.cmtCount > 0}">([[${bvo.cmtCount}]])</span>
+                    </a>
+                </td>
+                <td th:text="${bvo.writer}"></td>
+                <td th:text="${bvo.formattedDate}"></td>
             </tr>
             </tbody>
         </table>

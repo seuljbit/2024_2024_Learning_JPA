@@ -23,6 +23,8 @@ public interface BoardService {
                 .title(boardDTO.getTitle())
                 .writer(boardDTO.getWriter())
                 .content(boardDTO.getContent())
+                .password(boardDTO.getPassword())
+                .cmtCount(boardDTO.getCmtCount())
                 .build();
     }
 
@@ -35,6 +37,8 @@ public interface BoardService {
                 .content(board.getContent())
                 .regAt(board.getRegAt())
                 .modAt(board.getModAt())
+                .password(board.getPassword())
+                .cmtCount(board.getCmtCount())
                 .build();
     }
 
@@ -82,4 +86,6 @@ public interface BoardService {
     long fileDelete(String uuid);
 
     FileDTO getFile(String uuid);
+
+    boolean checkPassword(Long bno, String password);
 }

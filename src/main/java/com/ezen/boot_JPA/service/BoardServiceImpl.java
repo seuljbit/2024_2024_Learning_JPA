@@ -193,4 +193,15 @@ public class BoardServiceImpl implements BoardService {
 
         return null;
     }
+
+    @Override
+    public boolean checkPassword(Long bno, String inputPassword) {
+        Optional<Board> optionalBoard = boardRepository.findById(bno); // 게시글 가져오기
+        if (optionalBoard.isPresent()) {
+            // 게시글 비밀번호와 입력받은 비밀번호 비교
+            return optionalBoard.get().getPassword().equals(inputPassword);
+        }
+        return false; // 게시글이 없거나 비밀번호가 틀린 경우
+    }
+
 }

@@ -11,4 +11,5 @@ import java.util.List;
 public interface CommentRepository extends JpaRepository<Comment, Long> {
     // List<Comment> findByBno(long bno);
     Page<Comment> findByBno(long bno, Pageable pageable);
+    int countByBno(long bno);
 }

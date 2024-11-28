@@ -9,17 +9,18 @@
         <h1>Boot Detail Page</h1>
         <hr>
 
+        <div class="container-md">
         <form action="/board/modify" method="post" id="modForm" th:with="boardDTO=${boardFileDTO.boardDTO}" enctype="multipart/form-data">
             <input type="hidden" name="bno" th:value="${boardFileDTO.boardDTO.bno}">
 
             <div class="my-3">
                 <label for="regAt"> 작성 날짜 </label>
-                <input type="text" class="form-control" id="regAt" th:value="${boardDTO.regAt}" readonly>
+                <input type="text" class="form-control" id="regAt" th:value="${boardDTO.getFormattedDateTime}" readonly>
             </div>
 
             <div class="my-3">
                 <label for="modAt"> 수정 날짜 </label>
-                <input type="text" class="form-control" id="modAt" th:value="${boardDTO.modAt}" readonly>
+                <input type="text" class="form-control" id="modAt" th:value="${boardDTO.getFormattedModDateTime}" readonly>
             </div>
 
             <div class="mb-3">
@@ -39,6 +40,11 @@
                 <textarea name="content" id="content" cols="50" rows="5"
                           class="form-control" readonly>[[${boardDTO.content}]]
                 </textarea>
+            </div>
+
+            <div class="mb-3" style="display:none;">
+                <label for="password" class="form-label"> 비밀번호 </label>
+                <input type="password" class="form-control" name="password" id="password" />
             </div>
 
             <!-- file -->
@@ -104,10 +110,9 @@
         <ul class="list-group list-group-flush" id="cmtListArea">
             <li class="list-group-item">
                 <div class="ms-2 me-auto">
-                    <div class="fw-bold"> w </div>
-                    c
+                    <div class="fw-bold"></div>
                 </div>
-                <span class="badge text-bg-primary rounded-pill">r</span>
+                <span class="badge text-bg-primary rounded-pill"></span>
             </li>
         </ul>
 
@@ -139,6 +144,7 @@
             let bnoVal= [[${boardFileDTO.boardDTO.bno}]];
             console.log(bnoVal);
         </script>
+    </div>
     </div>
 
     <script th:src="@{/js/boardDetail.js}"> </script>
