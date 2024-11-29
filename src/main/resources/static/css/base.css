@@ -21,7 +21,7 @@ body {
     margin: 0;
     --color-text: #d05400;
     --color-bg: #203e5c;
-    --color-link: #6b5537;
+    --color-link: #91AABF;
     --color-link-hover: #fff;
     --color-content-title-sub: #D8E8F2;
     color: var(--color-text);
@@ -38,6 +38,7 @@ a {
     text-decoration: underline;
     color: var(--color-link);
     outline: none;
+    cursor: pointer;
 }
 
 a:hover, a:focus {
@@ -223,6 +224,11 @@ a:hover, a:focus {
 
 .pos-10 {
     grid-area: 37 / 39 / 48 / 47;
+}
+
+.content__link {
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .content__title {

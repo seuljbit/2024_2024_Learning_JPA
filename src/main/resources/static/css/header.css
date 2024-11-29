@@ -1,14 +1,83 @@
+body, .container {
+    margin: 0;
+    padding: 0;
+    background-color: #203e5c;
+}
+.container {
+    width: 100%;
+    height: 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+.header {
+    width: 100%;
+    height: 65px;
+    top: 0;
+    position: static;
+    margin-bottom: 70px;
+}
+
+.inner {
+    padding: 6px 20px;
+}
+
+.header-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header .logo {
+    display: flex;
+    flex-direction: column;
+    width: 105px;
+    align-items: flex-start;
+    position: relative;
+    font-family: "bely-display", sans-serif;
+}
+
+.header .logo_title {
+    position: relative;
+    align-self: stretch;
+    margin-top: -1px;
+    font-weight: 400;
+    color: #62809a;
+    font-size: 20px;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.header .logo_sub {
+    position: relative;
+    align-self: stretch;
+    font-weight: 400;
+    color: #b8ccdd;
+    font-size: 12px;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+
 * {
     scroll-behavior: smooth;
 }
 
-/* Menu code starts here */
+.instagram-icon {
+    position: fixed;
+    display: block;
+    bottom: 15px;
+    left: 30px;
+}
 
+/* Menu code starts here */
 #menuToggle {
     display: block;
     /* You can also use relative/absolute here if you want to stay on the top */
     position: fixed;
-    top: 30px;
+    top: 15px;
     right: 30px;
     z-index: 1;
     -webkit-user-select: none;
@@ -23,7 +92,7 @@
 }
 
 #menuToggle a:hover {
-    color: tomato;
+    color: #203e5c;
 }
 
 #menuToggle input {
@@ -105,15 +174,18 @@
     position: absolute;
     max-width: 400px;
     width: 100vw;
-    max-height: 100vh;
+    height: 110vh;
     margin: -100px 0 0 -200px;
-    padding: 50px;
-    padding-top: 125px;
+    padding: 50px 30px;
+    padding-top: 100px;
     box-sizing: border-box;
     overflow-y: auto;
-    background: #ededed;
+    background: rgba(237, 237, 237, 0.71);
     list-style-type: none;
     -webkit-font-smoothing: antialiased;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
     transform-origin: 0% 0%;
     transform: translate(100%, 0);
@@ -121,13 +193,14 @@
     transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
 }
 
-#menu li {
-    padding: 10px 0;
-    font-size: 22px;
+#menu a {
+    color: white;
 }
 
-#menu li label {
-    cursor: pointer;
+#menu > .menu-item-top a {
+    padding: 10px 0;
+    font-size: 25px;
+    margin-bottom: 25px;
 }
 
 /*
@@ -135,4 +208,11 @@
  */
 #menuToggle input:checked ~ ul {
     transform: none;
+}
+
+.instagram-icon {
+    position: fixed;
+    display: block;
+    bottom: 15px;
+    left: 30px;
 }

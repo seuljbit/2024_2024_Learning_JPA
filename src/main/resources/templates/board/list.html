@@ -3,13 +3,33 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/layout.html}">
+<head>
+    <title> Contact Board </title>
+    <link rel="stylesheet" type="text/css" href="/css/list.css" />
+</head>
 
 <div layout:fragment="content">
-    <div class="container-md">
-        <h1> 게시물 목록 </h1>
+    <div class="container-md introduction">
+        <h1 style="margin-bottom: 10px"> <img src="/img/camera-icon.png" class="camera-icon" alt="camera-icon"> Contact </h1>
+        <p> 박동혁 </p>
+        <p> Dong-hyuk Park </p>
+        <p> is a Photographer </p>
+        <p> Based in Seoul, South Korea. </p>
+        <div class="introduction-last">
+            <div>
+                <img src="/img/email-icon.png" alt="email-icon" class="email-icon">
+                <span> wkdehdwkdgur@naver.com </span>
+            </div>
+            <div>
+                <button> <a href="/board/register"> write </a></button>
+            </div>
+        </div>
+        <br>
         <hr>
-
-        <table class="table table-hover">
+    </div>
+    <br>
+    <div class="container-md">
+        <table class="table table-hover bg-transparent">
             <thead>
             <tr>
                 <th>#</th>

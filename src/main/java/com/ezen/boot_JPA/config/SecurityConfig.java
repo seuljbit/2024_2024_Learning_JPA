@@ -32,7 +32,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/", "/js/**", "/css/**", "/img/**", "/dist/**", "/upload/**",
                                 "/index/**", "/user/join", "/user/login", "/board/list", "/board/register",
-                                "/board/password-check", "/error").permitAll()
+                                "/board/password-check", "/gallery/**", "/error").permitAll()
                         .requestMatchers("/board/**").permitAll() // 나머지 /board 경로도 허용
                         .requestMatchers("/user/list").hasRole("ADMIN") // ADMIN 전용
                         .anyRequest().authenticated() // 그 외 모든 요청은 인증 필요

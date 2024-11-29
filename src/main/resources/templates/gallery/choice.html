@@ -1,11 +1,39 @@
 <!DOCTYPE html>
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout/layout.html}">
+<head>
+    <title> gallery </title>
+    <link rel="stylesheet" href="https://use.typekit.net/eqx3jwb.css">
+    <link rel="stylesheet" th:href="@{/css/choice.css}">
+    <link rel="stylesheet" type="text/css" href="/css/header.css" />
+</head>
 
-<div layout:fragment="content">
-    <div class="container-md">
-        <h1> My Spring Boot_JPA Project  </h1>
+<div th:replace="~{fragments/header :: header}"> </div>
+    <div class="scene">
+        <div class="shelf top">
+            <div class="face top"></div>
+            <div class="face front">
+                <a href="/gallery/seoul" class="photocard">
+                    <img src="/img/seoul.jpg" alt="">
+                    <div class="overlay">
+                        <span class="overlay-text">Seoul</span>
+                    </div>
+                </a>
+                <a href="gallery/japan" class="photocard">
+                    <img src="/img/tokyo.jpg" alt="">
+                    <div class="overlay">
+                        <span class="overlay-text">Japan</span>
+                    </div>
+                </a>
+                <a href="gallery/travel" class="photocard">
+                    <img src="/img/travel.jpg" alt="">
+                    <div class="overlay">
+                        <span class="overlay-text">Travel</span>
+                    </div>
+                </a>
+            </div>
+            <div class="face back"></div>
+            <div class="face left"></div>
+            <div class="face bottom"></div>
+        </div>
     </div>
-</div>

@@ -2,53 +2,69 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras.spring-security">
-<link rel="stylesheet" th:href="@{/css/header.css}">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> header </title>
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+</head>
 <div th:fragment="header">
+    <div class="header">
+        <div class="inner">
+            <div class="header-wrap">
+                <a href="/">
+                    <div class="logo">
+                        <div class="logo_title">Amugeona</div>
+                        <div class="logo_sub">Studio</div>
+                    </div>
+                </a>
+                <nav role="navigation">
+                    <div id="menuToggle">
+                        <input type="checkbox" id="menuCheckbox" />
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <ul id="menu">
+                            <li class="menu-item-top">
+                                <div class="menu-item">
+                                    <a class="nav-link active" aria-current="page" href="/">Home</a>
+                                </div>
+                                <div class="menu-item">
+                                    <a class="nav-link" href="/gallery/choice">Gallery</a>
+                                </div>
+                                <div class="menu-item">
+                                    <a class="nav-link" href="/">Shop</a>
+                                </div>
+                                <div class="menu-item" sec:authorize="isAnonymous()">
+                                    <a class="nav-link" href="/board/list">Contect</a>
+                                </div>
+                            </li>
 
-    <nav role="navigation">
-        <div id="menuToggle">
-            <input type="checkbox" id="menuCheckbox" />
+                            <li class="menu-item-bottom">
+                                <div class="menu-item" sec:authorize="isAnonymous()">
+                                    <a class="menu-link" href="/user/login">LOGIN</a>
+                                </div>
 
-            <span></span>
-            <span></span>
-            <span></span>
+                                <div class="nav-item" sec:authorize="isAuthenticated()">
+                                    <a class="nav-link" href="/user/logout">LOGOUT</a>
+                                </div>
 
-            <ul id="menu">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/"> &#11088; </a>
-                </li>
+                                <div class="nav-item" sec:authorize="isAnonymous()">
+                                    <a class="menu-link" href="/user/modify">MYPAGE</a>
+                                </div>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="/board/register"> 글쓰기 </a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="/board/list"> 목록 </a>
-                </li>
-
-                <li class="nav-item" sec:authorize="isAnonymous()">
-                    <a class="nav-link" href="/user/join"> 회원가입 </a>
-                </li>
-
-                <li class="nav-item" sec:authorize="isAnonymous()">
-                    <a class="nav-link" href="/user/login"> 로그인 </a>
-                </li>
-
-                <li class="nav-item" sec:authorize="isAuthenticated()">
-                    <a class="nav-link" href="/user/logout"> 로그아웃 </a>
-                </li>
-
-                <li class="nav-item" sec:authorize="hasRole('ADMIN')">
-                    <a class="nav-link" href="/user/list"> 회원목록 </a>
-                </li>
-
-                <li class="nav-item" sec:authorize="isAuthenticated()">
-                    <a class="nav-link" href="/user/modify"> [[${#authentication.name}]] 님의 정보수정 </a>
-                </li>
-            </ul>
+                                <div class="nav-item" sec:authorize="hasRole('ADMIN')">
+                                    <a class="menu-link" href="/user/list">MEMBER LIST</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
         </div>
-    </nav>
+    </div>
 
-
-
+    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none" class="instagram-icon">
+        <path d="M21.7133 3.33331C23.5883 3.33831 24.54 3.34831 25.3617 3.37165L25.685 3.38331C26.0583 3.39665 26.4267 3.41331 26.8717 3.43331C28.645 3.51665 29.855 3.79665 30.9167 4.20831C32.0167 4.63165 32.9433 5.20498 33.87 6.12998C34.7178 6.96287 35.3736 7.97077 35.7917 9.08331C36.2033 10.145 36.4833 11.355 36.5667 13.13C36.5867 13.5733 36.6033 13.9416 36.6167 14.3166L36.6267 14.64C36.6517 15.46 36.6617 16.4116 36.665 18.2866L36.6667 19.53V21.7133C36.6707 22.929 36.6579 24.1447 36.6283 25.36L36.6183 25.6833C36.605 26.0583 36.5883 26.4266 36.5683 26.87C36.485 28.645 36.2017 29.8533 35.7917 30.9166C35.3736 32.0292 34.7178 33.0371 33.87 33.87C33.0371 34.7178 32.0292 35.3736 30.9167 35.7916C29.855 36.2033 28.645 36.4833 26.8717 36.5666L25.685 36.6166L25.3617 36.6266C24.54 36.65 23.5883 36.6616 21.7133 36.665L20.47 36.6666H18.2883C17.0721 36.6709 15.8559 36.6582 14.64 36.6283L14.3167 36.6183C13.921 36.6033 13.5255 36.5861 13.13 36.5666C11.3567 36.4833 10.1467 36.2033 9.08333 35.7916C7.97138 35.3734 6.96407 34.7176 6.13167 33.87C5.28324 33.0373 4.62685 32.0293 4.20833 30.9166C3.79667 29.855 3.51667 28.645 3.43333 26.87L3.38333 25.6833L3.375 25.36C3.34428 24.1447 3.33039 22.929 3.33333 21.7133V18.2866C3.32872 17.071 3.34094 15.8553 3.37 14.64L3.38167 14.3166C3.395 13.9416 3.41167 13.5733 3.43167 13.13C3.515 11.355 3.795 10.1466 4.20667 9.08331C4.62616 7.97031 5.28371 6.96237 6.13333 6.12998C6.96526 5.28256 7.97198 4.62677 9.08333 4.20831C10.1467 3.79665 11.355 3.51665 13.13 3.43331C13.5733 3.41331 13.9433 3.39665 14.3167 3.38331L14.64 3.37331C15.8553 3.3437 17.071 3.33092 18.2867 3.33498L21.7133 3.33331ZM20 11.6666C17.7899 11.6666 15.6702 12.5446 14.1074 14.1074C12.5446 15.6702 11.6667 17.7898 11.6667 20C11.6667 22.2101 12.5446 24.3297 14.1074 25.8925C15.6702 27.4553 17.7899 28.3333 20 28.3333C22.2101 28.3333 24.3298 27.4553 25.8926 25.8925C27.4554 24.3297 28.3333 22.2101 28.3333 20C28.3333 17.7898 27.4554 15.6702 25.8926 14.1074C24.3298 12.5446 22.2101 11.6666 20 11.6666ZM20 15C20.6566 14.9999 21.3068 15.1291 21.9135 15.3803C22.5202 15.6314 23.0714 15.9996 23.5358 16.4639C24.0001 16.9281 24.3685 17.4792 24.6199 18.0858C24.8713 18.6924 25.0007 19.3425 25.0008 19.9991C25.0009 20.6558 24.8717 21.306 24.6205 21.9126C24.3694 22.5193 24.0012 23.0706 23.537 23.5349C23.0727 23.9993 22.5216 24.3677 21.915 24.6191C21.3084 24.8704 20.6583 24.9999 20.0017 25C18.6756 25 17.4038 24.4732 16.4661 23.5355C15.5285 22.5978 15.0017 21.3261 15.0017 20C15.0017 18.6739 15.5285 17.4021 16.4661 16.4644C17.4038 15.5268 18.6756 15 20.0017 15M28.7517 9.16665C28.1991 9.16665 27.6692 9.38614 27.2785 9.77684C26.8878 10.1675 26.6683 10.6974 26.6683 11.25C26.6683 11.8025 26.8878 12.3324 27.2785 12.7231C27.6692 13.1138 28.1991 13.3333 28.7517 13.3333C29.3042 13.3333 29.8341 13.1138 30.2248 12.7231C30.6155 12.3324 30.835 11.8025 30.835 11.25C30.835 10.6974 30.6155 10.1675 30.2248 9.77684C29.8341 9.38614 29.3042 9.16665 28.7517 9.16665Z" fill="white"/>
+    </svg>
 </div>

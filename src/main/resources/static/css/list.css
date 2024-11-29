@@ -1,0 +1,31 @@
+.camera-icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 20px;
+}
+
+.email-icon {
+    width: 20px;
+    height : 20px;
+}
+
+h1 {
+    font-weight: bolder;
+}
+
+p {
+    margin: 0;
+}
+
+.introduction, table tr th {
+    color: white;
+}
+
+.table-hover {
+    background-color: #203e5c;
+}
+
+.introduction-last {
+    display: flex;
+    justify-content: space-between;
+}
